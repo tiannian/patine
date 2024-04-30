@@ -12,13 +12,22 @@ macro_rules! define_uint {
         #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
         pub struct $ty(pub(crate) NativeType);
 
+        impl UnsafeFromLiteral for $ty {
+            #[inline]
+            fn from_literal(a: NativeType, b: NativeType, c: NativeType, d: NativeType) -> Self {
+                Self(unsafe { ffi::__yul__ext_literal(a, b, c, d) })
+            }
+        }
+
         impl AsNativeType for $ty {
+            #[inline]
             fn as_native_type(&self) -> NativeType {
                 self.0
             }
         }
 
         impl FromNativeType for $ty {
+            #[inline]
             fn from_native_type(x: NativeType) -> Self {
                 Self(x)
             }

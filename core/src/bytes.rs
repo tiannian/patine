@@ -17,18 +17,28 @@ macro_rules! define_fixed_bytes {
 
         impl $ty {
             // TODO: use U8
+            #[inline]
             pub fn get(&self, idx: U256) -> U256 {
                 builtin::byte(*self, idx)
             }
         }
 
+        impl UnsafeFromLiteral for $ty {
+            #[inline]
+            fn from_literal(a: NativeType, b: NativeType, c: NativeType, d: NativeType) -> Self {
+                Self(unsafe { ffi::__yul__ext_literal(a, b, c, d) })
+            }
+        }
+
         impl AsNativeType for $ty {
+            #[inline]
             fn as_native_type(&self) -> NativeType {
                 self.0
             }
         }
 
         impl FromNativeType for $ty {
+            #[inline]
             fn from_native_type(x: NativeType) -> Self {
                 Self(x)
             }
@@ -38,6 +48,7 @@ macro_rules! define_fixed_bytes {
 
         $(
             impl From<$ft> for $ty {
+                #[inline]
                 fn from(value: $ft) -> Self {
                     Self(value.0)
                 }
@@ -57,6 +68,7 @@ macro_rules! define_fixed_bytes {
         impl Not for $ty {
             type Output = $ty;
 
+            #[inline]
             fn not(self) -> Self::Output {
                 builtin::not(self)
             }
@@ -213,6 +225,7 @@ define_fixed_bytes!(
 );
 
 impl Bytes4 {
+    #[inline]
     pub fn unchecked_from(v: Bytes32) -> Self {
         Self(v.as_native_type())
     }

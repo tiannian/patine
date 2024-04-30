@@ -12,6 +12,7 @@ pub trait Contract {
 
     fn selfaddress(&self) -> Option<&Address>;
 
+    #[inline]
     fn address(&self) -> Address {
         match self.selfaddress() {
             Some(addr) => *addr,
@@ -19,6 +20,7 @@ pub trait Contract {
         }
     }
 
+    #[inline]
     fn balance(&self) -> U256 {
         match self.selfaddress() {
             Some(addr) => builtin::balance(*addr),
@@ -26,6 +28,7 @@ pub trait Contract {
         }
     }
 
+    #[inline]
     fn code(&self) -> impl Data {
         match self.selfaddress() {
             Some(a) => Code::new(*a),
@@ -33,14 +36,17 @@ pub trait Contract {
         }
     }
 
+    #[inline]
     fn context(&self) -> Context {
         Context {}
     }
 
+    #[inline]
     fn transaction(&self) -> Transaction {
         Transaction {}
     }
 
+    #[inline]
     fn emit(&self, event: impl Event) {
         event.emit()
     }

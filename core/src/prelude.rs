@@ -11,3 +11,7 @@ pub trait FromNativeType {
 pub trait Integer {}
 
 pub trait FixedBytes {}
+
+pub trait UnsafeFromLiteral {
+    fn from_literal(a: NativeType, b: NativeType, c: NativeType, d: NativeType) -> Self;
+}

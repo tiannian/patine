@@ -1,4 +1,5 @@
-use patine_std::{builtin::sstore, uint, U256};
+use patine_core::{builtin::sstore, U256};
+use patine_std::uint;
 
 #[no_mangle]
 pub fn _store_deployed(res: [U256; 8]) {

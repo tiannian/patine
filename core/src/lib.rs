@@ -40,6 +40,7 @@ macro_rules! define_two_op_trait {
 macro_rules! define_two_assign_op_trait {
     ($s:ty, $t:ty, $f:ident, $c: ident) => {
         impl $t for $s {
+            #[inline]
             fn $c(&mut self, rhs: Self) {
                 *self = builtin::$f(self.clone(), rhs);
             }
