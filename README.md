@@ -46,6 +46,8 @@
 
 ## Getting Started
 
+Refer to [store.rs](./std/examples/store.rs)
+
 ## License
 
 Licensed under:
