@@ -46,7 +46,7 @@
 
 ## Getting Started
 
-Refer to [store.rs](./std/examples/store.rs)
+Refer to [store.rs](./std/examples/store.rs) as simple store contract example.
 
 ## License
 
