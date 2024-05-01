@@ -16,14 +16,16 @@
   - [X] FFI
   - [X] Warpped Function
   - [X] UInt
-  - [X] BytesN
+  - [X] Fixed BytesN
   - [X] SInt
   - [X] Address
   - [ ] Add `AsRef` and `AsMut`
   - [X] Add From
   - [ ] Add `TryFrom`
-  - [ ] Add "UnsafeFrom" and `UnsafeInto`
+  - [X] Add "UnsafeFromLiteral"
   - [X] Memory
+  - [ ] Bytes
+  - [ ] String
 - [ ] Std
   - [X] Selector
   - [ ] ABI
@@ -32,6 +34,8 @@
     - [X] Msg
     - [X] Transaction
     - [X] Block
+  - [X] Storage
+    - [ ] Add `StorageEnDe`
 - [ ] Macros
   - [ ] Contract
   - [ ] uint!
