@@ -2,7 +2,7 @@ use core::marker::PhantomData;
 
 use patine_core::{
     allocate,
-    builtin::{keccak256, mstore, sload},
+    builtin::{keccak256, mstore},
     deallocate, AsNativeType, FromNativeType, U256,
 };
 
@@ -13,8 +13,10 @@ pub struct Map<K, V, B> {
 
     marker_k: PhantomData<K>,
     marker_v: PhantomData<V>,
-    marker_b: PhantomData<B>,
+    backend: B,
 }
+
+impl<K, V, B> Map<K, V, B> {}
 
 impl<K, V, B> Map<K, V, B>
 where
@@ -36,6 +38,6 @@ where
     pub fn get(&self, key: K) -> V {
         let solt = self.compute_solt(key);
 
-        sload(solt)
+        self.backend.load(solt)
     }
 }

@@ -7,7 +7,7 @@ use super::StorageBackend;
 pub struct Value<V, B> {
     solt: U256,
     marker_v: PhantomData<V>,
-    marker_b: PhantomData<B>,
+    backend: B,
 }
 
 impl<V, B> Value<V, B>
@@ -16,10 +16,10 @@ where
     B: StorageBackend,
 {
     pub fn set(&mut self, value: V) {
-        B::store(self.solt, value)
+        self.backend.store(self.solt, value)
     }
 
     pub fn get(&self) -> V {
-        B::load(self.solt)
+        self.backend.load(self.solt)
     }
 }
