@@ -2,7 +2,7 @@
 
 > Write EVM contract using Rust.
 
-## Features and TODO
+## Features
 
 - Generate EVM bytecode from Rust code.
 - Contract compostion.
@@ -11,6 +11,7 @@
 - Generate ABI.
 - Generate client SDK.
 
+## TODO
 
 - [ ] Core library.
   - [X] FFI
