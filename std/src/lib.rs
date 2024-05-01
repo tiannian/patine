@@ -24,3 +24,18 @@ pub use event::*;
 
 pub use patine_core::{address, bytes, sint, uint};
 pub use patine_macros::*;
+
+mod error;
+pub use error::*;
+
+#[doc(hidden)]
+pub use address::*;
+
+#[doc(hidden)]
+pub use bytes::*;
+
+#[doc(hidden)]
+pub use sint::*;
+
+#[doc(hidden)]
+pub use uint::*;

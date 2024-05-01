@@ -1,4 +1,5 @@
-use patine_std::{contract, Address, Contract};
+use patine_core::Address;
+use patine_std::Contract;
 
 #[derive(Default)]
 pub struct ExampleContract {
